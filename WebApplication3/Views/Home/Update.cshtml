@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Update Page";
+}
+@model WebApplication3.Models.Asset
+
+    <p><img src="~/Asset/Get/@Model.Id" width="150px" height="150px"></p>
+    <form action="~/Asset/Update/@Model.Id" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="MAX_FILE_SIZE" value="100000000" />
+        <input type="file" name="file01[]" />
+        <input type="submit" value="Click" />
+    </form>

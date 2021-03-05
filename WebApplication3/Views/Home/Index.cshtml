@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@using WebApplication3.Controllers
+@model IEnumerable<WebApplication3.Models.Asset>
+<style>
+    .conte {
+        margin-top: 25px;
+    }
+</style>
+
+<form action="Asset/Add" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="MAX_FILE_SIZE" value="100000000" />
+    <input type="file" multiple name="file01[]" />
+    <input type="submit" value="Click" />
+</form>
+
+<br />
+<h3>Все файлы</h3>
+
+@foreach (var f in Model)
+{
+    string str = $"/Asset/Get/{f.Id}";
+    <div class="conte">
+        <img src="@str" width="150px" height="150px">
+        <a asp-action="Delete" asp-controller="Asset" asp-route-id="@f.Id">Delete</a>
+        <span> | </span>
+        <a asp-action="Update" asp-controller="Home" asp-route-id="@f.Id">Update</a>
+    </div>
+}
